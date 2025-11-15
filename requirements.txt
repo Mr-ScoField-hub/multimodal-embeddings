@@ -1,9 +1,7 @@
-fastapi
-uvicorn
-torch
-torchvision
-pillow
-ftfy
-regex
-tqdm
-clip-by-openai
+fastapi==0.103.0
+uvicorn==0.25.2
+torch==2.2.0
+torchvision==0.17.1
+Pillow==10.0.0
+requests==2.32.5
+clip
