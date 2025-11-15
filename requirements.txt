@@ -1,6 +1,6 @@
 fastapi==0.103.0
-uvicorn==0.25.2
-torch==2.2.0
+uvicorn==0.38.0
+torch==2.2.1
 torchvision==0.17.1
 Pillow==10.0.0
 requests==2.32.5
