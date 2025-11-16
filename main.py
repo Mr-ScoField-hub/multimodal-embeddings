@@ -9,16 +9,19 @@ import clip
 
 app = FastAPI()
 
+# Allow your frontend and localhost during testing
+origins = [
+    "https://frontend-6zqct85x2-scofields-projects-b3359916.vercel.app",
+    "http://localhost:3000"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://frontend-6zqct85x2-scofields-projects-b3359916.vercel.app",
-        "http://localhost:3000"
-    ],
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_credentials=True
 )
-
 
 DATA_DIR = "data"
 UPLOAD_DIR = "uploads"
@@ -76,3 +79,9 @@ async def generate_embedding(filename: str = Form(...), caption: str = Form(...)
     matrix = combined.cpu().numpy().tolist()
 
     return {"filename": filename, "embedding_file": emb_path, "matrix": matrix}
+
+# --- ENTRY POINT FOR FLY.IO ---
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)
