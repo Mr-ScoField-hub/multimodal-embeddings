@@ -11,10 +11,14 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://frontend-6zqct85x2-scofields-projects-b3359916.vercel.app",
+        "http://localhost:3000"
+    ],
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
+
 
 DATA_DIR = "data"
 UPLOAD_DIR = "uploads"
